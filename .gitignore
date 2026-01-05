@@ -34,3 +34,8 @@ coverage/
 # Temp files
 *.tmp
 *.temp
+
+# Large model files
+models/*.pth
+models/*.index
+training-data/

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  voice-clone-api:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./models:/data/models
+      - ./training-data:/data/training-data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - RVC_DIR=/app/rvc
+      - MODELS_DIR=/data/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
