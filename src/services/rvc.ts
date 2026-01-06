@@ -64,7 +64,7 @@ class RVCService {
 
     return new Promise((resolve, reject) => {
       const args = [
-        path.join(RVC_DIR, 'infer_cli.py'),
+        path.join(RVC_DIR, 'tools/infer_cli.py'),
         '--input_path', options.inputPath,
         '--output_path', options.outputPath,
         '--model_path', modelPath,
@@ -105,7 +105,7 @@ class RVCService {
   async preprocessDataset(options: PreprocessOptions): Promise<void> {
     return new Promise((resolve, reject) => {
       const args = [
-        path.join(RVC_DIR, 'trainset_preprocess_pipeline_print.py'),
+        path.join(RVC_DIR, 'infer/modules/train/preprocess.py'),
         options.datasetDir,
         options.sampleRate.toString(),
         '2', // CPU threads
@@ -142,7 +142,7 @@ class RVCService {
   async extractFeatures(options: ExtractFeaturesOptions): Promise<void> {
     return new Promise((resolve, reject) => {
       const args = [
-        path.join(RVC_DIR, 'extract_f0_print.py'),
+        path.join(RVC_DIR, 'infer/modules/train/extract/extract_f0_print.py'),
         path.join(RVC_DIR, 'logs', options.modelName),
         '2', // CPU threads
         options.f0Method,
@@ -177,7 +177,7 @@ class RVCService {
   private async extractHubertFeatures(modelName: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const args = [
-        path.join(RVC_DIR, 'extract_feature_print.py'),
+        path.join(RVC_DIR, 'infer/modules/train/extract_feature_print.py'),
         'cuda:0',
         '1', // GPU number
         '0', // Part
@@ -215,7 +215,7 @@ class RVCService {
   async train(options: TrainOptions): Promise<void> {
     return new Promise((resolve, reject) => {
       const args = [
-        path.join(RVC_DIR, 'train_nsf_sim_cache_sid_load_pretrain.py'),
+        path.join(RVC_DIR, 'infer/modules/train/train.py'),
         '-e', options.modelName,
         '-sr', '40k',
         '-f0', '1',
@@ -280,7 +280,7 @@ class RVCService {
   async createIndex(options: IndexOptions): Promise<void> {
     return new Promise((resolve, reject) => {
       const args = [
-        path.join(RVC_DIR, 'train_index.py'),
+        path.join(RVC_DIR, 'tools/infer/train-index.py'),
         path.join(RVC_DIR, 'logs', options.modelName),
         'v2',
       ];
