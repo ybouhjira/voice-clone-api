@@ -237,6 +237,10 @@ async function trainInBackground(jobId: string, options: {
     job.status = 'preprocessing';
     job.progress = 5;
 
+    // Create RVC logs directory for this model
+    const RVC_DIR = process.env.RVC_DIR || '/app/rvc';
+    await fs.mkdir(`${RVC_DIR}/logs/${options.modelName}`, { recursive: true });
+
     // Preprocess audio
     await rvcService.preprocessDataset({
       datasetDir: options.datasetDir,
