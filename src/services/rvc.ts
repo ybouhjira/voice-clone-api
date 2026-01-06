@@ -110,7 +110,8 @@ class RVCService {
         options.sampleRate.toString(),
         '2', // CPU threads
         path.join(RVC_DIR, 'logs', options.modelName),
-        'False', // No normalization
+        'False', // noparallel
+        '3.7', // per (filter threshold)
       ];
 
       const proc = spawn('python3', args, {
