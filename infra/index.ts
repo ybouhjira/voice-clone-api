@@ -10,23 +10,23 @@ const gpuType = config.get("gpuType") || "nvidia-tesla-t4";
 const gpuCount = config.getNumber("gpuCount") || 0; // 0 = no GPU
 
 // VPC Network
-const network = new gcp.compute.Network("voice-clone-network", {
+const network = new gcp.compute.Network("voiceswap-network", {
     autoCreateSubnetworks: true,
 });
 
 // Firewall rules
-const firewall = new gcp.compute.Firewall("voice-clone-firewall", {
+const firewall = new gcp.compute.Firewall("voiceswap-firewall", {
     network: network.id,
     allows: [
         { protocol: "tcp", ports: ["22", "3000"] },
         { protocol: "icmp" },
     ],
     sourceRanges: ["0.0.0.0/0"],
-    targetTags: ["voice-clone-api"],
+    targetTags: ["voiceswap-api"],
 });
 
 // Static IP
-const staticIp = new gcp.compute.Address("voice-clone-ip", {
+const staticIp = new gcp.compute.Address("voiceswap-ip", {
     region: region,
 });
 
@@ -44,8 +44,8 @@ apt-get install -y nodejs
 
 # Clone and setup API
 cd /opt
-git clone https://github.com/ybouhjira/voice-clone-api.git
-cd voice-clone-api
+git clone https://github.com/VoiceSwap/voiceswap-api.git
+cd voiceswap-api
 
 # Clone RVC
 git clone https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI.git rvc
@@ -60,18 +60,18 @@ wget -q https://huggingface.co/lj1995/VoicConversionWebUI/resolve/main/pretraine
 npm install && npm run build
 
 # Create systemd service
-cat > /etc/systemd/system/voice-clone-api.service << 'EOF'
+cat > /etc/systemd/system/voiceswap-api.service << 'EOF'
 [Unit]
 Description=Voice Clone API
 After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/voice-clone-api
+WorkingDirectory=/opt/voiceswap-api
 Environment=NODE_ENV=production
 Environment=PORT=3000
-Environment=RVC_DIR=/opt/voice-clone-api/rvc
-Environment=MODELS_DIR=/opt/voice-clone-api/models
+Environment=RVC_DIR=/opt/voiceswap-api/rvc
+Environment=MODELS_DIR=/opt/voiceswap-api/models
 ExecStart=/usr/bin/node dist/index.js
 Restart=always
 
@@ -80,15 +80,15 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl enable voice-clone-api
-systemctl start voice-clone-api
+systemctl enable voiceswap-api
+systemctl start voiceswap-api
 `;
 
 // VM Instance (GPU optional)
-const instance = new gcp.compute.Instance("voice-clone-vm", {
+const instance = new gcp.compute.Instance("voiceswap-vm", {
     machineType: machineType,
     zone: zone,
-    tags: ["voice-clone-api"],
+    tags: ["voiceswap-api"],
 
     bootDisk: {
         initializeParams: {

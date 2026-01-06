@@ -1,5 +1,5 @@
-name: voice-clone-infra
-description: A minimal Google Cloud TypeScript Pulumi program
+name: voiceswap-infra
+description: VoiceSwap API - GPU-accelerated voice cloning deployment
 runtime: nodejs
 config:
   pulumi:tags:

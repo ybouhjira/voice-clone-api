@@ -1,7 +1,0 @@
-encryptionsalt: v1:wECAhjXDd9Y=:v1:W2FAXkkVY/x1NCEY:UvbOWcW6J7/mnL0LLXTP8dp2qqDl9Q==
-config:
-  gcp:project: jira-dashboard-yb
-  voice-clone-infra:project: jira-dashboard-yb
-  voice-clone-infra:zone: us-central1-a
-  voice-clone-infra:region: us-central1
-  voice-clone-infra:machineType: e2-medium

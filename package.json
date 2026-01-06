@@ -1,5 +1,5 @@
 {
-  "name": "voice-clone-api",
+  "name": "voiceswap-api",
   "version": "1.0.0",
   "description": "GPU-accelerated voice cloning REST API powered by RVC",
   "main": "dist/index.js",
@@ -15,8 +15,8 @@
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "typecheck": "tsc --noEmit",
-    "docker:build": "docker build -f docker/Dockerfile -t voice-clone-api .",
-    "docker:run": "docker run --gpus all -p 3000:3000 -v ./models:/data/models voice-clone-api"
+    "docker:build": "docker build -f docker/Dockerfile -t voiceswap-api .",
+    "docker:run": "docker run --gpus all -p 3000:3000 -v ./models:/data/models voiceswap-api"
   },
   "keywords": [
     "voice-cloning",
@@ -28,7 +28,7 @@
     "cuda",
     "ai"
   ],
-  "author": "Youssef Bouhjira",
+  "author": "VoiceSwap",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",

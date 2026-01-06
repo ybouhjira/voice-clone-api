@@ -1,5 +1,5 @@
 {
-    "name": "voice-clone-infra",
+    "name": "voiceswap-infra",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18",

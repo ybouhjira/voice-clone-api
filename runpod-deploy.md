@@ -1,4 +1,4 @@
-# Deploy Voice Clone API to RunPod
+# Deploy VoiceSwap API to RunPod
 
 ## Quick Deploy (RunPod GPU Pod)
 
@@ -11,8 +11,8 @@
 3. SSH into the pod and run:
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/voice-clone-api.git
-cd voice-clone-api
+git clone https://github.com/VoiceSwap/voiceswap-api.git
+cd voiceswap-api
 
 # Install RVC
 git clone https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI.git rvc
@@ -32,8 +32,8 @@ npm install
 npm run build
 
 # Start the API
-export RVC_DIR=/workspace/voice-clone-api/rvc
-export MODELS_DIR=/workspace/voice-clone-api/models
+export RVC_DIR=/workspace/voiceswap-api/rvc
+export MODELS_DIR=/workspace/voiceswap-api/models
 npm start
 ```
 
