@@ -44,8 +44,8 @@ apt-get install -y nodejs
 
 # Clone and setup API
 cd /opt
-git clone https://github.com/ybouhjira/voiceswap-api.git
-cd voiceswap-api
+git clone https://github.com/ybouhjira/voice-clone-api.git
+cd voice-clone-api
 
 # Clone RVC
 git clone https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI.git rvc
@@ -67,11 +67,11 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/voiceswap-api
+WorkingDirectory=/opt/voice-clone-api
 Environment=NODE_ENV=production
 Environment=PORT=3000
-Environment=RVC_DIR=/opt/voiceswap-api/rvc
-Environment=MODELS_DIR=/opt/voiceswap-api/models
+Environment=RVC_DIR=/opt/voice-clone-api/rvc
+Environment=MODELS_DIR=/opt/voice-clone-api/models
 ExecStart=/usr/bin/node dist/index.js
 Restart=always
 
