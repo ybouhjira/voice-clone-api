@@ -1,6 +1,0 @@
-encryptionsalt: v1:Wv1lOwKQLk0=:v1:1J3jiP5qyVEjmuFk:Z/Mn8WljWg4ZMIydH+OFw465W+xQeg==
-config:
-  gcp:project: jira-dashboard-yb
-  voiceswap-infra:project: jira-dashboard-yb
-  voiceswap-infra:machineType: e2-medium
-  voiceswap-infra:gpuCount: "0"
