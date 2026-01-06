@@ -11,7 +11,7 @@
 3. SSH into the pod and run:
 ```bash
 # Clone the repo
-git clone https://github.com/VoiceSwap/voiceswap-api.git
+git clone https://github.com/ybouhjira/voiceswap-api.git
 cd voiceswap-api
 
 # Install RVC

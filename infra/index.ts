@@ -44,7 +44,7 @@ apt-get install -y nodejs
 
 # Clone and setup API
 cd /opt
-git clone https://github.com/VoiceSwap/voiceswap-api.git
+git clone https://github.com/ybouhjira/voiceswap-api.git
 cd voiceswap-api
 
 # Clone RVC
